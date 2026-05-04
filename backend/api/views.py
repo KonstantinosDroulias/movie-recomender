@@ -36,4 +36,12 @@ def recommend(request):
         if search:
             results.append(search[0])
 
+    if request.user.is_authenticated:
+        from users.models import SearchHistory
+        SearchHistory.objects.create(
+            user=request.user,
+            searched_movie=title,
+            recommended=[r.get('title') for r in results]
+        )
+
     return JsonResponse({'results': results})
