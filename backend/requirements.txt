@@ -5,9 +5,11 @@ Django==6.0.4
 django-cors-headers==4.9.0
 django-restframework==0.0.1
 djangorestframework==3.17.1
+gunicorn==25.3.0
 idna==3.13
 joblib==1.5.3
 numpy==2.4.4
+packaging==26.2
 pandas==3.0.2
 psycopg2-binary==2.9.12
 python-dateutil==2.9.0.post0

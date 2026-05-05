@@ -1,10 +1,9 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000/api/v1'
+  baseURL: '/api/v1' 
 })
 
-// Auth token helper
 export const setAuthToken = (token) => {
   if (token) {
     api.defaults.headers.common['Authorization'] = `Token ${token}`
@@ -25,7 +24,7 @@ export const loginUser    = (data)  => api.post('/auth/login/', data)
 export const logoutUser   = ()      => api.post('/auth/logout/')
 
 // History
-export const getHistory = () => api.get('/auth/history/')
+export const getHistory      = ()         => api.get('/auth/history/')
 
 // Watchlist
 export const getWatchlist    = ()         => api.get('/auth/watchlist/')
