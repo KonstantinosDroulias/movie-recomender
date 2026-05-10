@@ -26,11 +26,18 @@ def train():
         ml_to_index[movie_id] = i
         index_to_ml[i] = movie_id
 
+    # Build genre lookup per movieId
+    genre_map = {}
+    for _, row in movies.iterrows():
+        genres = set(row['genres'].split('|')) if pd.notna(row['genres']) else set()
+        genre_map[row['movieId']] = genres
+
     joblib.dump({
         'similarity':  similarity,
         'movies':      movies,
         'ml_to_index': ml_to_index,
         'index_to_ml': index_to_ml,
+        'genre_map':   genre_map,
     }, MODEL_PATH)
 
 
